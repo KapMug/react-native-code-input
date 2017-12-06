@@ -69,6 +69,7 @@ export default class ConfirmationCodeInput extends Component {
 		onFulfill: PropTypes.func,
 		inputComponent: React.PropTypes.func,
 		keyboardType: TextInput.propTypes.keyboardType,
+		autoCorrect: React.PropTypes.bool,
 	}
 
 	static defaultProps = {
@@ -84,6 +85,7 @@ export default class ConfirmationCodeInput extends Component {
 		inputComponent: TextInput,
 		onFulfill: () => undefined,
 		keyboardType: defaultKeyboardType,
+		autoCorrect: false,
 	}
 
 	constructor(...args) {
@@ -181,6 +183,7 @@ export default class ConfirmationCodeInput extends Component {
 				onChangeText={this._onInputCode(id)}
 				onKeyPress={this._onKeyPress}
 				maxLength={1}
+				autoCorrect={this.props.autoCorrect}
 			/>
 		))
 
