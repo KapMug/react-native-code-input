@@ -67,9 +67,9 @@ export default class ConfirmationCodeInput extends Component {
 		codeInputStyle: TextInput.propTypes.style,
 		containerStyle: View.propTypes.style,
 		onFulfill: PropTypes.func,
-		inputComponent: React.PropTypes.func,
+		inputComponent: PropTypes.func,
 		keyboardType: TextInput.propTypes.keyboardType,
-		autoCorrect: React.PropTypes.bool,
+		autoCorrect: PropTypes.bool,
 	}
 
 	static defaultProps = {
