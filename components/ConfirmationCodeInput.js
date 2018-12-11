@@ -131,7 +131,15 @@ export default class ConfirmationCodeInput extends Component {
 		}
 	}
 
-	_onInputCode = index => character => {
+	_onInputCode = index => _.debounce(character => {
+		if (character.length === this.props.codeLength) {
+			this._onPasteCode(index, character)
+		} else if (character.length === 1) {
+			this._onTypeCode(index, character)
+		}
+	}, 100)
+
+ 	_onTypeCode = (index, character) => {
 		const {codeLength, onFulfill} = this.props
 		let newCodeArr = _.clone(this.state.codeArr)
 		newCodeArr[index] = character
@@ -150,6 +158,18 @@ export default class ConfirmationCodeInput extends Component {
 				currentIndex: prevState.currentIndex + 1,
 			}
 		})
+	}
+	
+	_onPasteCode = (index, code) => {
+		const {codeLength, onFulfill} = this.props;
+		const newCodeArr = code.split('');
+		const newCurrentIndex = codeLength - 1;
+ 		this._blur(this.state.currentIndex)
+ 		this.setState(() => ({
+			codeArr: newCodeArr,
+			currentIndex: newCurrentIndex,
+		}))
+		onFulfill(code)
 	}
 
 	focus = () => this._setFocus(this.state.currentIndex)
