@@ -202,7 +202,7 @@ export default class ConfirmationCodeInput extends Component {
 				value={this.state.codeArr[id] ? this.state.codeArr[id].toString() : ''}
 				onChangeText={this._onInputCode(id)}
 				onKeyPress={this._onKeyPress}
-				maxLength={1}
+				maxLength={codeLength}
 				autoCorrect={this.props.autoCorrect}
 			/>
 		))
