@@ -105,9 +105,9 @@ export default class ConfirmationCodeInput extends Component {
 		this._setFocus(0)
 	}
 
-	_setFocus = (index) => this.codeInputRefs[index].focus()
+	_setFocus = (index) => this.codeInputRefs[index] && this.codeInputRefs[index].focus()
 
-	_blur = (index) => this.codeInputRefs[index].blur()
+	_blur = (index) => this.codeInputRefs[index] && this.codeInputRefs[index].blur()
 
 	_onFocus = (index) => () => {
 		const {codeArr} = this.state
